@@ -4,15 +4,15 @@ import { Context } from "detritus-client/lib/command/context";
 import validate from "../utils/validator";
 
 export type Command = CommandClientAdd & {
-    run: (client: Client, ctx: Context) => any
+    run: (client: Client, ctx: Context) => any;
 };
 
 export default class Client extends CommandClient {
-    public queue: Map<BigInt, string>;
-    public noEOI: boolean;
-    public messages: any;
-    public roleName: string;
     public boundTo: string;
+    public messages: any;
+    public noEOI: boolean;
+    public queue: Map<BigInt, string>;
+    public roleName: string;
     public timeouts: any;
 
     constructor(token: string, config: any, options: CommandClientOptions) {
@@ -24,16 +24,19 @@ export default class Client extends CommandClient {
         this.boundTo = config.boundTo;
         this.timeouts = config.timeouts;
 
-        validate(config).catch(console.error);
+        validate(config)
+            .catch(console.error);
     }
 
     public async initCommands(): Promise<Command.Command[]> {
-        for (const cmd of readdirSync("./src/commands/").filter(c => c.endsWith(".js"))) {
-            const command: Command = await import(`../commands/${cmd}`).then(v => v.default);
+        for (const cmd of readdirSync("./src/commands/")
+            .filter((c) => c.endsWith(".js"))) {
+            const command: Command = await import(`../commands/${cmd}`)
+                .then((v) => v.default);
             this.add({
                 ...command,
+                responseOptional: true,
                 run: command.run.bind(null, this),
-                responseOptional: true
             });
         }
 

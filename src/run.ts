@@ -1,5 +1,5 @@
 import Client from "./structures/client";
-const config = require("../configs/config");
+import * as config from "../configs/config.json";
 
 (async () => {
     const client = new Client(config.token, config, {
@@ -7,8 +7,8 @@ const config = require("../configs/config");
         prefix: config.prefix,
         gateway: {
             autoReconnect: true,
-            compress: true
-        }
+            compress: true,
+        },
     });
 
     await client.initCommands();
