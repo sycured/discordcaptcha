@@ -4,21 +4,24 @@
   "description": "A verification bot",
   "main": "src/run.js",
   "scripts": {
+    "build": "tsc",
+    "clean": "find src -iname '*.js' -delete",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/y21/discordcaptcha.git"
+    "url": "git+https://github.com/sycured/discordcaptcha.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/y21/discordcaptcha/issues"
+    "url": "https://github.com/sycured/discordcaptcha/issues"
   },
-  "homepage": "https://github.com/y21/discordcaptcha#readme",
+  "homepage": "https://github.com/sycured/discordcaptcha#readme",
   "dependencies": {
     "@types/node": "^13.11.0",
     "detritus-client": "^0.10.1",
+    "iltorb": "^2.3.0",
     "jimp": "^0.10.0"
   }
 }
