@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/sycured/discordcaptcha#readme",
   "dependencies": {
-    "@types/node": "^13.11.0",
+    "@types/node": "^13.13.14",
     "detritus-client": "^0.10.1",
     "iltorb": "^2.3.0",
     "jimp": "^0.12.0"
